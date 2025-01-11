@@ -7,7 +7,16 @@ FROM debian:bullseye
 RUN apt-get update && apt-get upgrade -y
 
 # # install the required packages
-RUN apt-get install -y nginx openssl
+RUN apt-get install -y systemd nginx openssl nano
+
+# copy the nginx configuration file
+ADD ./nginx.conf /etc/nginx/sites-available/default
+
+# remove the default configuration file
+RUN rm -rf /etc/nginx/sites-enabled/default
+
+# create a symbolic link to the configuration file
+RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # create the ssl directory
 RUN mkdir -p /etc/nginx/ssl
