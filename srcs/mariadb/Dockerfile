@@ -9,6 +9,9 @@ RUN apt-get update && apt-get upgrade -y
 # install the required packages
 RUN apt-get install -y mariadb-server netcat
 
+# expose the port
+EXPOSE 3306
+
 # remove the default database
 #RUN rm -rf /var/lib/mysql
 
