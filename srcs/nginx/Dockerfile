@@ -13,13 +13,13 @@ RUN apt-get install -y systemd nginx openssl nano
 EXPOSE 443
 
 # copy the nginx configuration file
-#ADD ./nginx.conf /etc/nginx/sites-available/default
+ADD ./nginx.conf /etc/nginx/sites-available/default
 
 # remove the default configuration file
-#RUN rm -rf /etc/nginx/sites-enabled/default
+RUN rm -rf /etc/nginx/sites-enabled/default
 
 # create a symbolic link to the configuration file
-#RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+RUN ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # create the ssl directory
 RUN mkdir -p /etc/nginx/ssl
