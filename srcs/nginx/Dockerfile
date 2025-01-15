@@ -13,7 +13,7 @@ RUN apt-get install -y systemd nginx openssl nano
 EXPOSE 443
 
 # copy the nginx configuration file
-ADD ./nginx.conf /etc/nginx/sites-available/default
+ADD ./conf/nginx.conf /etc/nginx/sites-available/default
 
 # remove the default configuration file
 RUN rm -rf /etc/nginx/sites-enabled/default
@@ -29,7 +29,7 @@ RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout \
     /etc/nginx/ssl/inception.key -subj "/C=FR/ST=Paris/L=Paris/O=42, Inc./OU=IT/CN=inception"
 
 # copy the nginx configuration file
-COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 # create the wordpress directory
 RUN mkdir -p /var/www/wordpress

@@ -25,10 +25,10 @@ EXPOSE 3306
 #RUN chmod 777 /var/run/mysqld 
 
 # copy file from host to container
-COPY ./mdb-conf.sh /mdb-conf.sh
+COPY ./conf/mdb-conf.sh /conf/mdb-conf.sh
 
 # set permissions to the file
 RUN chmod +x /mdb-conf.sh
 
 # define entrypoint command to run when the container starts
-ENTRYPOINT ["./mdb-conf.sh"]
+ENTRYPOINT ["./conf/mdb-conf.sh"]

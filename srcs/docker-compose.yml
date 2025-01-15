@@ -5,7 +5,7 @@ services:
 #mariadb
   mariadb:
     image: mariadb:user
-    container_name: mariadb
+    container_name: ${MYSQL_DB}
     build: ./mariadb
     volumes:
       - mariadb:/var/lib/mysql
