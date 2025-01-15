@@ -28,7 +28,7 @@ EXPOSE 3306
 COPY ./conf/mdb-conf.sh /conf/mdb-conf.sh
 
 # set permissions to the file
-RUN chmod +x /mdb-conf.sh
+RUN chmod +x /conf/mdb-conf.sh
 
 # define entrypoint command to run when the container starts
 ENTRYPOINT ["./conf/mdb-conf.sh"]
