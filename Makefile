@@ -13,7 +13,7 @@ up: build
 	sudo docker-compose -f srcs/docker-compose.yml up -d
 
 # stop the containers
-down:
+down: stop
 	sudo docker-compose -f srcs/docker-compose.yml down
 
 # stop the containers
