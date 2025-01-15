@@ -1,4 +1,4 @@
-# Description: MariaDB Dockerfile
+# Description: PhpMyAdmin Dockerfile
 
 # pull base image
 FROM debian:bullseye
