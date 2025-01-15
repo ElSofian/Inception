@@ -19,6 +19,7 @@ services:
       interval: 1s
       timeout: 5s
       retries: 10
+
 #nginx
   nginx:
     image: nginx:user
@@ -33,6 +34,7 @@ services:
     networks:
       - inception
     restart: always
+
 #wordpress
   wordpress:
     image: wordpress:user
@@ -45,6 +47,23 @@ services:
       - wordpress:/var/www/wordpress
     env_file :
       - .env
+    networks:
+      - inception
+    restart: always
+
+# phpmyadmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: ${MYSQL_DB}
+      PMA_USER: root
+      PMA_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "8080:80"
+    depends_on:
+      mariadb:
+        condition: service_healthy
     networks:
       - inception
     restart: always
